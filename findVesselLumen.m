@@ -14,15 +14,10 @@ function [M1]=findVesselLumen(I,M,num)
 % num=12;% 12 directions
 [s1,s2]=size(I);
 [row,col,ix]=polarCoord_discrete(num,s1,s2);
-px=zeros(1,num);
-py=zeros(1,num);
-% fix disconnection problems for imperfect outer wall markings
-B=(M>0);
-se=strel('disk',2);
-B=imdilate(B,se);
-B=imfill(B,'holes');
-B=imerode(B,se);
-M(B)=1;
+px=[];
+py=[];
+idx=0;
+M(M>0)=1;
 for j=1:num
     y=I(ix(:,j));
     z=M(ix(:,j));
@@ -42,11 +37,12 @@ for j=1:num
         end
     end
     if i>0
-        py(j)=row(i,j);
-        px(j)=col(i,j);
+        idx=idx+1;
+        py(idx)=row(i,j);
+        px(idx)=col(i,j);
     end
 end
-disp(length(px))
+% disp(length(px))
 M1=uint8(poly2mask(px,py,s1,s2));
 
 function [row,col,ix] = polarCoord_discrete(n,s1,s2)
@@ -79,45 +75,36 @@ function [BAT,MD,TTP]=BAT_LLM_ridge(t,y)
 %   y: contrast intensity
 % ouput:
 %   BAT: balus arrival time
+%   MD: mid intensity location
 %   TTP: time to peak
-%   Cpre: baseline
-%   CC: y-Cpre
-%   CMX: max contrast
-%   CNR: contrast intensity noise ratio (t:0~BAT)
-% Author: Adam Huang, 2021/07/28, revised 2022/04/19
+% Author: Adam Huang, 2021/07/28, revised 2024/11/28
 % adamhuan@gmail.com
 %
 % Prepared for the original paper: 
 % Time to peak and full width at half maximum in MR perfusion: valuable 
 % indicators for monitoring moyamoya patients after revasculariation
 % Scientific Reports 11(1) (2021) 479
-% by Adam Huang, Chung-Wei Lee, Hon-Man Liu
+% Authors: Adam Huang, Chung-Wei Lee, Hon-Man Liu
 %
-% LLM was adapted from:
+% LLM algorithm was adapted from:
 % "An automatic approach for estimating bolus arrival time in dynamic 
 % contrast MRI using piecewise continuous regression models"
 % by LH Cheong, TS Koh, and Z Hou
 
-len=length(y);
-yy=y(max(1,len-5):end);
-[~,dist]=max(yy);
-len=len-length(yy)+dist;
-TTP=t(len);
+% x2=length(y); % manual outer border
+[~,x1]=max(y); % ymax at x1
+TTP=t(x1); % converted to real time as t might be in a different time scale
 [c1,c2]=size(y);
-if c2>c1
+if c2>c1 % check if y is sized Nx1
     y=y';
 end
-C=y(1:len);
-ix=1;
+C=y(1:x1);
+x0=1;
 err=realmax;% a big number
-if flag>0
-    figure,
-    plot(t,y,'r');
-end
-for i=2:len-1
-    X=ones(len,2);
+for i=2:x1-1 % linear search for the minimal fitting error
+    X=ones(x1,2);
     X(:,2)=0;
-    for j=i+1:len
+    for j=i+1:x1
         X(j,2)=t(j)-t(i);
     end
 %     B=inv(transpose(X)*X)*(transpose(X)*C); % find inv() explicitly
@@ -125,20 +112,16 @@ for i=2:len-1
     D=C-X*B;
     e=norm(D);
     if e<err
-        ix=i;
+        x0=i;
         err=e;
-        if flag>0
-            hold on,
-            plot(t(1:len),X*B,'g');
-            hold off;
-        end
     end
 end
-BAT=t(ix);
-md=(min(y(1:BAT))+y(TTP))/2;
-for i=BAT:TTP
+BAT=t(x0); % refer to Scientific Reports 11(1) (2021) 479
+md=(min(y(1:BAT))+y(TTP))/2; % mid intensity
+for i=x0:x1
     if y(i)>=md
         MD=i;
         break;
     end
 end
+MD=t(MD); % converted to real time as t might be in a different time scale
