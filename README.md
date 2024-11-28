@@ -5,9 +5,15 @@ Deep Learning for Quantification of Basilar Artery Morphology Using Intracranial
 
 Authors: Chien-Hung Tsou, Hon-Man Liu, Adam Huang
 
-# How to run the example code
+# How to run the Jupyter Notebook example
 
-1. Down all matlat code files and images (image.png and mask.png)
+1. Download the Jupyter Notebook file and images (image.png and mask.png)
+
+2. Try the Jupyter Notebook file on Google Colab platform (with both image.png and mask.png)
+
+# How to run the MATLAB example code
+
+1. Download all MATLAB code files and images (image.png and mask.png)
 
 2. Run "main.m"
 
