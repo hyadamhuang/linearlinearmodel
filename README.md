@@ -1,7 +1,11 @@
 # linearlinearmodel
-% manuscript: Deep Learning for quantification of basilar artery morphology
-% using intracranial vessel wall MRI: a feasibility study
-% by Chien-Hung Tsou, Hon-Man Liu, Adam Huang
+This MATLAB code has been prepared as a part of research publication entitled:
+
+Deep Learning for Quantification of Basilar Artery Morphology Using Intracranial Vessel Wall MRI: A Feasibility Study
+
+Authors: Chien-Hung Tsou, Hon-Man Liu, Adam Huang
+
+
 % input:
 %   I: cross sectional vessel image
 %   M: outer vessel wall boundary mask
