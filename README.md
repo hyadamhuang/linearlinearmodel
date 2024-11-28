@@ -5,7 +5,7 @@ Deep Learning for Quantification of Basilar Artery Morphology Using Intracranial
 
 Authors: Chien-Hung Tsou, Hon-Man Liu, Adam Huang
 
-function [M2]=findVesselLumen(I,M,num)
+# function [M2]=findVesselLumen(I,M,num)
 
 % input:
 
