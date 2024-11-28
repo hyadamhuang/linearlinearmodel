@@ -19,6 +19,4 @@ function [M2]=findVesselLumen(I,M,num)
 
 %   M2: ring-shaped vessel wall mask
 
-% Author: Adam Huang, 2024/11/28
-
-% adamhuan@gmail.com
+% Initial Submission Date: 2024/11/28
