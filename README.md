@@ -5,7 +5,13 @@ Deep Learning for Quantification of Basilar Artery Morphology Using Intracranial
 
 Authors: Chien-Hung Tsou, Hon-Man Liu, Adam Huang
 
-# function [M2]=findVesselLumen(I,M,num)
+# How to run the example code
+
+1. Down all matlat code files and images (image.png and mask.png)
+
+2. Run "main.m"
+
+# function [M1]=findVesselLumen(I,M,num)
 
 % input:
 
@@ -17,6 +23,6 @@ Authors: Chien-Hung Tsou, Hon-Man Liu, Adam Huang
 
 % ouput:
 
-%   M2: ring-shaped vessel wall mask
+%   M1: vessel lumen (inner wall) mask
 
 % Initial Submission Date: 2024/11/28
