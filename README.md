@@ -1,5 +1,5 @@
 # linearlinearmodel
-This MATLAB code has been prepared as a part of research publication entitled:
+These Jupyter Notebook and MATLAB codes have been prepared as a part of research publication entitled:
 
 Deep Learning for Quantification of Basilar Artery Morphology Using Intracranial Vessel Wall MRI: A Feasibility Study
 
