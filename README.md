@@ -3,7 +3,7 @@ These Jupyter Notebook and MATLAB codes have been prepared as a part of research
 
 Deep Learning for Quantification of Basilar Artery Morphology Using Intracranial Vessel Wall MRI: A Feasibility Study
 
-Authors: Chien-Hung Tsou, Hon-Man Liu, Adam Huang
+
 
 # How to run the Jupyter Notebook example
 
