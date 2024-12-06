@@ -7,7 +7,7 @@ Deep Learning for Quantification of Basilar Artery Morphology Using Intracranial
 
 # How to run the Jupyter Notebook example
 
-1. Try the Jupyter Notebook file on Google Colab platform
+1. Try the Jupyter Notebook file (LinearLinearModel.ipynb) on Google Colab platform
 
 # How to run the MATLAB example code
 
