@@ -7,9 +7,7 @@ Deep Learning for Quantification of Basilar Artery Morphology Using Intracranial
 
 # How to run the Jupyter Notebook example
 
-1. Download the Jupyter Notebook file and images (image.png and mask.png)
-
-2. Try the Jupyter Notebook file on Google Colab platform (with both image.png and mask.png)
+1. Try the Jupyter Notebook file on Google Colab platform
 
 # How to run the MATLAB example code
 
