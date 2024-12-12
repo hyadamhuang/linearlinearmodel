@@ -1,15 +1,14 @@
 function [M1]=findVesselLumen(I,M,num)
 % manuscript: Deep Learning for quantification of basilar artery morphology
 % using intracranial vessel wall MRI: a feasibility study
-% by Chien-Hung Tsou, Hon-Man Liu, Adam Huang
+
 % input:
 %   I: cross sectional vessel image
 %   M: vessel outer wall boundary mask
 %   num: number of probing directions
 % ouput:
 %   M1: vessel lumen (inner wall) mask
-% Author: Adam Huang, 2024/11/28
-% adamhuan@gmail.com
+
 
 % num=12;% 12 directions
 [s1,s2]=size(I);
@@ -77,15 +76,7 @@ function [BAT,MD,TTP]=BAT_LLM_ridge(t,y)
 %   BAT: balus arrival time
 %   MD: mid intensity location
 %   TTP: time to peak
-% Author: Adam Huang, 2021/07/28, revised 2024/11/28
-% adamhuan@gmail.com
-%
-% Prepared for the original paper: 
-% Time to peak and full width at half maximum in MR perfusion: valuable 
-% indicators for monitoring moyamoya patients after revasculariation
-% Scientific Reports 11(1) (2021) 479
-% Authors: Adam Huang, Chung-Wei Lee, Hon-Man Liu
-%
+
 % LLM algorithm was adapted from:
 % "An automatic approach for estimating bolus arrival time in dynamic 
 % contrast MRI using piecewise continuous regression models"
